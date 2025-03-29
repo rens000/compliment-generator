@@ -1,13 +1,13 @@
 'use client';
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 
-export default function Compliments() {
+function ComplimentsContent() {
   const searchParams = useSearchParams();
-  const person = searchParams.get("person"); 
+  const person = searchParams.get("person");
   const router = useRouter();
-  
+
   function onBackClick() {
     router.push("/");
   }
@@ -26,7 +26,6 @@ export default function Compliments() {
       .catch(() => setLoading(false));
   }
 
-  
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(---primary-font)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -36,14 +35,15 @@ export default function Compliments() {
         <div className="flex gap-4 items-center flex-col sm:flex-row">
             <button
               type='button'
-              disabled={loading}
               onClick={() => fetchCompliment()}
+              disabled={loading}
+              className="relative"
             >
               {loading ? "Loading..." : "New Compliment"}
             </button>
         </div>
         <div>
-          <p>{data ? data["compliment"] : ''}</p>
+            <p>{data ? data["compliment"] : ''}</p>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
@@ -55,5 +55,13 @@ export default function Compliments() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function Compliments() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ComplimentsContent />
+    </Suspense>
   );
 }
