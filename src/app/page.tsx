@@ -13,6 +13,16 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(---primary-font)]">
+      <div className="absolute top-0 w-full z-0">
+        <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg" fill="none" className="w-full">
+          <path
+            d="M0 10 Q 25 0, 50 10 T 100 10"
+            stroke="#b6a0d3"
+            strokeWidth="1"
+            fill="transparent"
+          />
+        </svg>
+      </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div className="mb-2 tracking-[-.01em]">
           Hi there!  Please select your name below.
