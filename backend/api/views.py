@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
 import google.generativeai as genai
+import random
 
 GENAI_API_KEY = settings.GEMINI_API_KEY
 
@@ -30,13 +31,50 @@ class ComplimentView(APIView):
 
 
     def get_extra_info(self, person):
-        if person == "mom":
-            return "community organizer, founded local pflag chapter, brightens up any room, somehow always happy, goes out of her way to spend time with family driving hours, offers consistent support and will always listen on the phone, always growing as a human - went to family therapy, lover of nature (hiking, backpacking, canoing), at peace with the world, amazing gift giver, always down for an adventure, incredible patience and understanding (teaches me how to be more understanding of others), deep empathy"
-        if person == "dad":
-            return "a good listener, calm and collected, true to himself, consistent, kind, gentle, and loyal, good at golf and raquetball, always came to all my soccer games in high school, sort of okay at worldle, makes sort of funny dad jokes, lover of whoppers"
-        if person == "davis":
-            return "my younger sibling, inquisitive, painfully smart, autistic, queer just like me! (maybe even more), has amazing style, gave me a bunch of their old clothes for xmas in a trash bag, traveled accross vietnam together, steady and loving to their partner kae, cares about what counts, sent me poutine once, one of my closest friends, always willing to give advice, patient with my endless yapping and rants"
-        if person == "kai":
-            return "my younger brother, funny, wise beyond his years, straight yet somehow still one of my best friends, amazing tennis player top in school, joined swim for the first time his senior year, the beautiful one according to mimi, puts time into his family despite being the youngest, unnecessarily modest"
+        details = {
+            "mom": [
+                "community organizer, founded local pflag chapter (although she no longer is president), works on abortion access",
+                "brightens up any room, somehow always happy",
+                "amazing gift giver",
+                "always down for an adventure, hiking, biking last summer, kayaking at the late, backpacking when i was young",
+                "deep empathy, shows me how to empathize with others",
+                "believes in my language (french and spanish) skills even when i do not",
+                "very nice curly hair",
+                "taught me to value beauty in people and the world"
+            ],
+            "dad": [
+                "a good listener, calm and collected",
+                "true to himself, consistent, kind, gentle, and loyal",
+                "makes sort of funny dad jokes",
+                "lover of whoppers",
+                "occassionally alright at worldle",
+                "always went to my soccer games in high school",
+                "strong in fighting his RA",
+                "always takes good care of the cats",
+            ],
+            "davis": [
+                "my younger sibling, inquisitive, painfully smart",
+                "gave me a bunch of their old clothes for xmas in a trash bag",
+                "sent me poutine once",
+                "one of my closest friends",
+                "always willing to give advice and yap on the phone",
+                "good consistent to their partner kae",
+                "has a silly laugh",
+                "took a train journey from chicago to san fran with me"
+            ],
+            "kai": [
+                "funny, wise beyond his years",
+                "amazing tennis player top in school",
+                "puts time into his family despite being the youngest",
+                "unnecessarily modest",
+                "joined swim his last year in highschool",
+                "will go on many future bike rides with me!",
+                "swims laps at the pool with me sometimes",
+                "politically informed, lover of hasanabi"
+            ],
+        }
+
+        random_num = random.randint(0, 7)
+        return details.get(person)[random_num]
 
 
