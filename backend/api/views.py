@@ -14,7 +14,7 @@ class ComplimentView(APIView):
         
         extra_info = self.get_extra_info(person)
         
-        prompt = f"Generate a 1-2 sentence, short but meaningful compliment for {person}. Here are some details about them: {extra_info}. Be kind and uplifting."
+        prompt = f"Generate a short, 1 sentence compliment for {person}. Here are some details about them: {extra_info}. Take just one of the points at random and say something kind (and perhaps a bit funny)."
 
         try:
             model = genai.GenerativeModel("gemini-1.5-pro-latest")
@@ -31,11 +31,11 @@ class ComplimentView(APIView):
 
     def get_extra_info(self, person):
         if person == "mom":
-            return "measured, community organizer, joyful, encouraging, brightens up any room, goes out of her way to spend time with family, offers consistent support, always growing as a human, lover of nature (hiking, backpacking, canoing), at peace with the world, amazing gift giver, always down for an adventure, incredible patience and understanding (teaches me how to be more understanding of others), deep empathy"
+            return "community organizer, founded local pflag chapter, brightens up any room, somehow always happy, goes out of her way to spend time with family driving hours, offers consistent support and will always listen on the phone, always growing as a human - went to family therapy, lover of nature (hiking, backpacking, canoing), at peace with the world, amazing gift giver, always down for an adventure, incredible patience and understanding (teaches me how to be more understanding of others), deep empathy"
         if person == "dad":
-            return "a good listener, calm, collected, true to himself, consistent, kind, gentle, loyal, good at golf and raquetball, always came to all my soccer games in high school, sort of okay at worldle"
+            return "a good listener, calm and collected, true to himself, consistent, kind, gentle, and loyal, good at golf and raquetball, always came to all my soccer games in high school, sort of okay at worldle, makes sort of funny dad jokes, lover of whoppers"
         if person == "davis":
-            return "my younger sibling, inquisitive, painfully smart, autistic, queer, amazing style, gave me a bunch of their old clothes for xmas in a trash bag, traveled accross vietnam together, steady and loving partner to kae, cares about what counts, sent me poutine once, good listener, one of my closest friends, always willing to give advice, patient with my endless yapping and rants"
+            return "my younger sibling, inquisitive, painfully smart, autistic, queer just like me! (maybe even more), has amazing style, gave me a bunch of their old clothes for xmas in a trash bag, traveled accross vietnam together, steady and loving to their partner kae, cares about what counts, sent me poutine once, one of my closest friends, always willing to give advice, patient with my endless yapping and rants"
         if person == "kai":
             return "my younger brother, funny, wise beyond his years, straight yet somehow still one of my best friends, amazing tennis player top in school, joined swim for the first time his senior year, the beautiful one according to mimi, puts time into his family despite being the youngest, unnecessarily modest"
 
