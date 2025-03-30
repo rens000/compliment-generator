@@ -5,7 +5,6 @@ cachetools==5.5.2
 certifi==2025.1.31
 charset-normalizer==3.4.1
 distro==1.9.0
-dj-database-url==2.3.0
 Django==5.1.7
 django-cors-headers==4.7.0
 djangorestframework==3.16.0
